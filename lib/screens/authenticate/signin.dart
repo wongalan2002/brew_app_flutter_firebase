@@ -2,6 +2,9 @@ import 'package:brew_app_flutter_firebase/services/auth.dart';
 import "package:flutter/material.dart";
 
 class SignIn extends StatefulWidget {
+  final VoidCallback toggleView;
+
+  const SignIn({Key key, this.toggleView}) : super(key: key);
   @override
   _SignInState createState() => _SignInState();
 }
@@ -20,6 +23,13 @@ class _SignInState extends State<SignIn> {
         backgroundColor: Colors.brown[400],
         elevation: 0.0,
         title: Text("Sign in to Brew Crew"),
+        actions: <Widget>[
+          FlatButton.icon(
+            onPressed: widget.toggleView,
+            icon: Icon(Icons.person),
+            label: Text("Sign in"),
+          )
+        ],
       ),
       body: Container(
         padding: EdgeInsets.symmetric(

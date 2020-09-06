@@ -2,6 +2,10 @@ import 'package:brew_app_flutter_firebase/services/auth.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
+  final VoidCallback toggleView;
+
+  const Register({Key key, this.toggleView}) : super(key: key);
+
   @override
   _RegisterState createState() => _RegisterState();
 }
@@ -17,10 +21,16 @@ class _RegisterState extends State<Register> {
     return Scaffold(
       backgroundColor: Colors.brown[100],
       appBar: AppBar(
-        backgroundColor: Colors.brown[400],
-        elevation: 0.0,
-        title: Text("Sign in to Brew Crew"),
-      ),
+          backgroundColor: Colors.brown[400],
+          elevation: 0.0,
+          title: Text("Register to Brew Crew"),
+          actions: <Widget>[
+            FlatButton.icon(
+              onPressed: widget.toggleView,
+              icon: Icon(Icons.person),
+              label: Text("Register"),
+            )
+          ]),
       body: Container(
         padding: EdgeInsets.symmetric(
           vertical: 20.0,
