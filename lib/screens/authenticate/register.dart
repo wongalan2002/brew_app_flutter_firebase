@@ -16,6 +16,8 @@ class _RegisterState extends State<Register> {
   String email = "";
   String password = "";
 
+  final _formKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,7 +30,7 @@ class _RegisterState extends State<Register> {
             FlatButton.icon(
               onPressed: widget.toggleView,
               icon: Icon(Icons.person),
-              label: Text("Register"),
+              label: Text("Sign in"),
             )
           ]),
       body: Container(
@@ -37,21 +39,32 @@ class _RegisterState extends State<Register> {
           horizontal: 50.0,
         ),
         child: Form(
+          key: _formKey,
           child: Column(children: <Widget>[
             SizedBox(
               height: 20.0,
             ),
             TextFormField(
+              validator: (value) {
+                return value.isEmpty ? "Enter an Email" : null;
+              },
               onChanged: (val) {
-                setState(() {
-                  email = val;
-                });
+                setState(
+                  () {
+                    email = val;
+                  },
+                );
               },
             ),
             SizedBox(
               height: 20.0,
             ),
             TextFormField(
+              validator: (value) {
+                return value.length < 6
+                    ? "Enter password longer than 6 char"
+                    : null;
+              },
               obscureText: true,
               onChanged: (val) {
                 setState(() {
@@ -70,7 +83,14 @@ class _RegisterState extends State<Register> {
                   color: Colors.white,
                 ),
               ),
-              onPressed: () async {},
+              onPressed: () async {
+                if (_formKey.currentState.validate()) {
+                  await _auth.registerWithEmailPassword(
+                    email: email,
+                    password: password,
+                  );
+                }
+              },
             ),
             // Text("Email: ${email}\nPassword: ${password}")
           ]),

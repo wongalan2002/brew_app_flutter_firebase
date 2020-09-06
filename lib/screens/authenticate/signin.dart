@@ -15,6 +15,8 @@ class _SignInState extends State<SignIn> {
   String email = "";
   String password = "";
 
+  final _signinFormKey = GlobalKey<FormState>();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,7 +29,7 @@ class _SignInState extends State<SignIn> {
           FlatButton.icon(
             onPressed: widget.toggleView,
             icon: Icon(Icons.person),
-            label: Text("Sign in"),
+            label: Text("Register"),
           )
         ],
       ),
@@ -37,11 +39,13 @@ class _SignInState extends State<SignIn> {
           horizontal: 50.0,
         ),
         child: Form(
+          key: _signinFormKey,
           child: Column(children: <Widget>[
             SizedBox(
               height: 20.0,
             ),
             TextFormField(
+              validator: (value) => value.isEmpty ? "Enter an Email" : null,
               onChanged: (val) {
                 setState(() {
                   email = val;
@@ -52,6 +56,9 @@ class _SignInState extends State<SignIn> {
               height: 20.0,
             ),
             TextFormField(
+              validator: (value) => value.length < 6
+                  ? "Enter password longer than 6 chars"
+                  : null,
               obscureText: true,
               onChanged: (val) {
                 setState(() {
@@ -70,7 +77,14 @@ class _SignInState extends State<SignIn> {
                   color: Colors.white,
                 ),
               ),
-              onPressed: () async {},
+              onPressed: () async {
+                if (_signinFormKey.currentState.validate()) {
+                  await _auth.signInWithEmailPassword(
+                    email: email,
+                    password: password,
+                  );
+                }
+              },
             ),
             // Text("Email: ${email}\nPassword: ${password}")
           ]),
