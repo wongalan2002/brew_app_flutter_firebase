@@ -1,10 +1,14 @@
 import 'package:brew_app_flutter_firebase/services/auth.dart';
+import 'package:brew_app_flutter_firebase/shared/constants.dart';
 import "package:flutter/material.dart";
 
 class SignIn extends StatefulWidget {
   final VoidCallback toggleView;
 
-  const SignIn({Key key, this.toggleView}) : super(key: key);
+  const SignIn({
+    Key key,
+    this.toggleView,
+  }) : super(key: key);
   @override
   _SignInState createState() => _SignInState();
 }
@@ -45,6 +49,7 @@ class _SignInState extends State<SignIn> {
               height: 20.0,
             ),
             TextFormField(
+              decoration: textInputDecoration.copyWith(hintText: "Email"),
               validator: (value) => value.isEmpty ? "Enter an Email" : null,
               onChanged: (val) {
                 setState(() {
@@ -56,6 +61,7 @@ class _SignInState extends State<SignIn> {
               height: 20.0,
             ),
             TextFormField(
+              decoration: textInputDecoration.copyWith(hintText: "Password"),
               validator: (value) => value.length < 6
                   ? "Enter password longer than 6 chars"
                   : null,

@@ -1,4 +1,5 @@
 import 'package:brew_app_flutter_firebase/services/auth.dart';
+import 'package:brew_app_flutter_firebase/shared/constants.dart';
 import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
@@ -45,6 +46,7 @@ class _RegisterState extends State<Register> {
               height: 20.0,
             ),
             TextFormField(
+              decoration: textInputDecoration.copyWith(hintText: "Email"),
               validator: (value) {
                 return value.isEmpty ? "Enter an Email" : null;
               },
@@ -60,6 +62,7 @@ class _RegisterState extends State<Register> {
               height: 20.0,
             ),
             TextFormField(
+              decoration: textInputDecoration.copyWith(hintText: "Password"),
               validator: (value) {
                 return value.length < 6
                     ? "Enter password longer than 6 char"
