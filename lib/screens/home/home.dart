@@ -1,5 +1,6 @@
 import 'package:brew_app_flutter_firebase/model/Brew.dart';
 import 'package:brew_app_flutter_firebase/screens/home/brewlist.dart';
+import 'package:brew_app_flutter_firebase/screens/home/settings_form.dart';
 import 'package:brew_app_flutter_firebase/services/auth.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../services/database.dart';
@@ -19,7 +20,7 @@ class Home extends StatelessWidget {
               vertical: 20.0,
               horizontal: 60.0,
             ),
-            child: Text("This is modal"),
+            child: SettingsForm(),
           );
         },
       );
