@@ -10,7 +10,7 @@ import 'package:provider/provider.dart';
 class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    void showSettingsPanel(BuildContext context) {
+    void showSettingsPanel() {
       showModalBottomSheet(
         context: context,
         builder: (context) {
@@ -44,7 +44,7 @@ class Home extends StatelessWidget {
             ),
             FlatButton.icon(
               onPressed: () {
-                showSettingsPanel(context);
+                showSettingsPanel();
               },
               icon: Icon(Icons.settings),
               label: Text("Settings"),
