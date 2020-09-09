@@ -12,7 +12,9 @@ class BrewList extends StatefulWidget {
 class _BrewListState extends State<BrewList> {
   @override
   Widget build(BuildContext context) {
-    final brews = Provider.of<List<Brew>>(context);
+    final brews = Provider.of<List<Brew>>(context) ?? [];
+
+    print(brews);
 
     return brews == null
         ? Center(child: Text("Nothing here"))

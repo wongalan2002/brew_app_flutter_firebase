@@ -39,7 +39,7 @@ class AuthService {
       FirebaseUser user = results.user;
 
       //create a new doc with user uid
-      await DatabseService(uid: user.uid)
+      await DatabaseService(uid: user.uid)
           .updateUserData("0", " new crew member", 100);
 
       // print(user);
@@ -58,7 +58,7 @@ class AuthService {
           email: email, password: password);
       FirebaseUser user = results.user;
 
-      await DatabseService(uid: user.uid)
+      await DatabaseService(uid: user.uid)
           .updateUserData("0", " new crew member", 100);
 
       // print(user);

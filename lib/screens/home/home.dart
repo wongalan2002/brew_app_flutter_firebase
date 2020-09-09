@@ -16,11 +16,23 @@ class Home extends StatelessWidget {
         context: context,
         builder: (context) {
           return Container(
-            padding: EdgeInsets.symmetric(
-              vertical: 20.0,
-              horizontal: 60.0,
+            color: Color(0xff757575),
+            child: Container(
+              width: double.infinity,
+              margin: EdgeInsets.all(0),
+              padding: EdgeInsets.symmetric(
+                vertical: 40,
+                horizontal: 40,
+              ),
+              decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.only(
+                  topLeft: Radius.circular(20),
+                  topRight: Radius.circular(20),
+                ),
+              ),
+              child: SettingsForm(),
             ),
-            child: SettingsForm(),
           );
         },
       );
@@ -28,7 +40,7 @@ class Home extends StatelessWidget {
 
     final AuthService _auth = AuthService();
     return StreamProvider<List<Brew>>.value(
-      value: DatabseService().brews,
+      value: DatabaseService().brews,
       child: Scaffold(
         backgroundColor: Colors.brown[50],
         appBar: AppBar(
