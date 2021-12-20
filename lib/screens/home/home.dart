@@ -1,7 +1,8 @@
-import 'package:brew_app_flutter_firebase/model/Brew.dart';
-import 'package:brew_app_flutter_firebase/screens/home/brewlist.dart';
-import 'package:brew_app_flutter_firebase/screens/home/settings_form.dart';
-import 'package:brew_app_flutter_firebase/services/auth.dart';
+import 'package:brew_crew/screens/home/settings_form.dart';
+import 'package:brew_crew/services/database.dart';
+import 'package:brew_crew/models/brew.dart';
+import 'package:brew_crew/screens/home/brewlist.dart';
+import 'package:brew_crew/services/auth.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 import '../../services/database.dart';
 

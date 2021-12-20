@@ -1,4 +1,4 @@
-import 'package:brew_app_flutter_firebase/services/auth.dart';
+import 'package:brew_crew/services/auth.dart';
 import 'package:flutter/material.dart';
 
 class SignOut extends StatefulWidget {

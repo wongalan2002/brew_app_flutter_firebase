@@ -1,4 +1,4 @@
-import 'package:brew_app_flutter_firebase/model/Brew.dart';
+import 'package:brew_crew/models/brew.dart';
 import 'package:flutter/material.dart';
 
 class BrewTile extends StatelessWidget {

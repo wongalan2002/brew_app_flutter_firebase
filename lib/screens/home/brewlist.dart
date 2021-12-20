@@ -1,5 +1,6 @@
-import 'package:brew_app_flutter_firebase/model/Brew.dart';
-import 'package:brew_app_flutter_firebase/screens/home/brew_tile.dart';
+
+import 'package:brew_crew/models/brew.dart';
+import 'brew_tile.dart';
 import 'package:flutter/material.dart';
 // import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:provider/provider.dart';
