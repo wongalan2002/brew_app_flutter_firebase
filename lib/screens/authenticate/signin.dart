@@ -4,7 +4,7 @@ import 'package:brew_crew/shared/loading.dart';
 import "package:flutter/material.dart";
 
 class SignIn extends StatefulWidget {
-  final Function toggleView;
+  final Function? toggleView;
   SignIn({this.toggleView});
 
   @override
@@ -32,10 +32,10 @@ class _SignInState extends State<SignIn> {
               elevation: 0.0,
               title: Text('Sign in to Brew Crew'),
               actions: <Widget>[
-                FlatButton.icon(
+                ElevatedButton.icon(
                   icon: Icon(Icons.person),
                   label: Text('Register'),
-                  onPressed: () => widget.toggleView(),
+                  onPressed: () => widget.toggleView!(),
                 ),
               ],
             ),
@@ -49,7 +49,7 @@ class _SignInState extends State<SignIn> {
                     TextFormField(
                       decoration:
                           textInputDecoration.copyWith(hintText: 'email'),
-                      validator: (val) => val.isEmpty ? 'Enter an email' : null,
+                      validator: (val) => val!.isEmpty ? 'Enter an email' : null,
                       onChanged: (val) {
                         setState(() => email = val);
                       },
@@ -59,7 +59,7 @@ class _SignInState extends State<SignIn> {
                       obscureText: true,
                       decoration:
                           textInputDecoration.copyWith(hintText: 'password'),
-                      validator: (val) => val.length < 6
+                      validator: (val) => val!.length < 6
                           ? 'Enter a password 6+ chars long'
                           : null,
                       onChanged: (val) {
@@ -67,14 +67,14 @@ class _SignInState extends State<SignIn> {
                       },
                     ),
                     SizedBox(height: 20.0),
-                    RaisedButton(
+                    MaterialButton(
                         color: Colors.pink[400],
                         child: Text(
                           'Sign In',
                           style: TextStyle(color: Colors.white),
                         ),
                         onPressed: () async {
-                          if (_formKey.currentState.validate()) {
+                          if (_formKey.currentState!.validate()) {
                             setState(() => loading = true);
                             dynamic result = await _auth
                                 .signInWithEmailAndPassword(email, password);

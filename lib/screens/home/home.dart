@@ -42,6 +42,7 @@ class Home extends StatelessWidget {
     final AuthService _auth = AuthService();
     return StreamProvider<List<Brew>>.value(
       value: DatabaseService().brews,
+      initialData: [],
       child: Scaffold(
         backgroundColor: Colors.brown[50],
         appBar: AppBar(
@@ -49,14 +50,14 @@ class Home extends StatelessWidget {
           backgroundColor: Colors.brown[400],
           elevation: 0.0,
           actions: <Widget>[
-            FlatButton.icon(
+            ElevatedButton.icon(
               onPressed: () async {
                 await _auth.signOut();
               },
               icon: Icon(Icons.person),
               label: Text("Logout"),
             ),
-            FlatButton.icon(
+            ElevatedButton.icon(
               onPressed: () {
                 showSettingsPanel();
               },

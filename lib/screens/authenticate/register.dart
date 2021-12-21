@@ -6,7 +6,7 @@ import 'package:flutter/material.dart';
 
 class Register extends StatefulWidget {
 
-  final Function toggleView;
+  final Function? toggleView;
   Register({ this.toggleView });
 
   @override
@@ -33,10 +33,10 @@ class _RegisterState extends State<Register> {
         elevation: 0.0,
         title: Text('Sign up to Brew Crew'),
         actions: <Widget>[
-          FlatButton.icon(
+          ElevatedButton.icon(
             icon: Icon(Icons.person),
             label: Text('Sign In'),
-            onPressed: () => widget.toggleView(),
+            onPressed: () => widget.toggleView!(),
           ),
         ],
       ),
@@ -49,7 +49,7 @@ class _RegisterState extends State<Register> {
               SizedBox(height: 20.0),
               TextFormField(
                 decoration: textInputDecoration.copyWith(hintText: 'email'),
-                validator: (val) => val.isEmpty ? 'Enter an email' : null,
+                validator: (val) => val!.isEmpty ? 'Enter an email' : null,
                 onChanged: (val) {
                   setState(() => email = val);
                 },
@@ -58,20 +58,20 @@ class _RegisterState extends State<Register> {
               TextFormField(
                 decoration: textInputDecoration.copyWith(hintText: 'password'),
                 obscureText: true,
-                validator: (val) => val.length < 6 ? 'Enter a password 6+ chars long' : null,
+                validator: (val) => val!.length < 6 ? 'Enter a password 6+ chars long' : null,
                 onChanged: (val) {
                   setState(() => password = val);
                 },
               ),
               SizedBox(height: 20.0),
-              RaisedButton(
+              MaterialButton(
                   color: Colors.pink[400],
                   child: Text(
                     'Register',
                     style: TextStyle(color: Colors.white),
                   ),
                   onPressed: () async {
-                    if(_formKey.currentState.validate()){
+                    if(_formKey.currentState!.validate()){
                       setState(() => loading = true);
                       dynamic result = await _auth.registerWithEmailAndPassword(email, password);
                       if(result == null) {
